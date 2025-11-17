@@ -5,3 +5,4 @@ const supabaseAnonKey = process.env.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3M
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
+
