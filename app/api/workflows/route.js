@@ -3,8 +3,16 @@ import { NextResponse } from 'next/server'
 import axios from 'axios'
 import { createServerClient } from '@supabase/supabase-js'
 
-const SUPABASE_URL = process.env.https://cpegoqtlgzveflngwfia.supabase.coL
-const SUPABASE_SERVICE_ROLE_KEY = process.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwZWdvcXRsZ3p2ZWZsbmd3ZmlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDU1NjEsImV4cCI6MjA3ODM4MTU2MX0.DH-df0Mxq6qlGA4cMQJLL-ANCpVAnczkN_DoC7vfwT8
+const SUPABASE_URL = process.env.import axios from 'axios'
+import { createServerClient } from '@supabase/supabase-js'
+
+const SUPABASE_URL = process.env.SUPABASE_URL
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+const N8N_BASE_URL = process.env.N8N_BASE_URL
+const N8N_API_KEY = process.env.N8N_API_KEY
+
+const SUPABASE_SERVICE_ROLE_KEY = process.env. SUPABASE_SERVICE_ROLE_KEY
 const N8N_BASE_URL = process.env.N8N_BASE_URL
 const N8N_API_KEY = process.env.N8N_API_KEY
 
