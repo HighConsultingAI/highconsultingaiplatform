@@ -2,8 +2,8 @@
 import { NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/supabase-js'
 
-const SUPABASE_URL = process.env.https://cpegoqtlgzveflngwfia.supabase.co
-const SUPABASE_SERVICE_ROLE_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwZWdvcXRsZ3p2ZWZsbmd3ZmlhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjgwNTU2MSwiZXhwIjoyMDc4MzgxNTYxfQ.Q9CKx1jT_GQapCbYKceWcfQOJ42YHxOzOuFweQd_KIE
+const SUPABASE_URL = process.env.SUPABASE_URL 
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
 const supabaseAdmin = createServerClient(https://cpegoqtlgzveflngwfia.supabase.co, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwZWdvcXRsZ3p2ZWZsbmd3ZmlhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjgwNTU2MSwiZXhwIjoyMDc4MzgxNTYxfQ.Q9CKx1jT_GQapCbYKceWcfQOJ42YHxOzOuFweQd_KIE
 
 export async function POST(req) {
