@@ -2,7 +2,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import CanvasArea from '../../../components/CanvasArea'
+import import CanvasArea from '../../../components/CanvasArea.jsx'
 
 export default function WorkflowEditor({ params }) {
   const { id } = params
