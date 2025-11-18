@@ -1,14 +1,43 @@
-```jsx
-// components/NodeTypes/SimpleNode.jsx
-import React from 'react'
+'use client'
+import React, { useCallback, useState } from 'react'
+import dynamic from 'next/dynamic'
+import SimpleNode from './NodeTypes/SimpleNode'
 
+// FIXED dynamic imports (ReactFlow exports default components)
+const ReactFlow = dynamic(() => import('reactflow').then(m => m.default), { ssr: false })
+const Background = dynamic(() => import('reactflow').then(m => m.Background), { ssr: false })
+const Controls = dynamic(() => import('reactflow').then(m => m.Controls), { ssr: false })
+const MiniMap = dynamic(() => import('reactflow').then(m => m.MiniMap), { ssr: false })
 
-export default function SimpleNode({ data }) {
-return (
-<div style={{padding:12, borderRadius:8, background:'#0b0b0d', border:'1px solid rgba(255,255,255,0.03)'}}>
-<div style={{fontWeight:600}}>{data.label}</div>
-<div style={{fontSize:12, color:'#9aa0a6', marginTop:6}}>{data.desc}</div>
-</div>
-)
+export default function CanvasArea({ workflowId }) {
+  const [nodes, setNodes] = useState([
+    { id: '1', type: 'simple', position: { x: 50, y: 50 }, data: { label: 'Trigger', desc: 'Starts workflow' } },
+    { id: '2', type: 'simple', position: { x: 360, y: 80 }, data: { label: 'HTTP Request', desc: 'Calls API' } }
+  ])
+
+  const [edges, setEdges] = useState([
+    { id: 'e1-2', source: '1', target: '2', animated: false }
+  ])
+
+  const nodeTypes = { simple: SimpleNode }
+
+  const onNodesChange = useCallback((changes) => {}, [])
+
+  return (
+    <div className="canvas-shell">
+      <div style={{ height: '720px' }}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          nodeTypes={nodeTypes}
+          fitView
+        >
+          <Background />
+          <Controls />
+          <MiniMap />
+        </ReactFlow>
+      </div>
+    </div>
+  )
 }
-```
