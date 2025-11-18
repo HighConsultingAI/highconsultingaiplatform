@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata = {
   title: process.env.NEXT_PUBLIC_APP_NAME || 'High Consulting AI',
-  description: 'AI automation platform'
+  description: 'AI automation platform',
 }
 
 export default function RootLayout({ children }) {
@@ -12,7 +12,9 @@ export default function RootLayout({ children }) {
       <body>
         <div className="app-shell">
           <header className="topbar">
-            <div <div className="brand">{process.env.NEXT_PUBLIC_APP_NAME || 'HCAI'}</div>
+            <div className="brand">
+              {process.env.NEXT_PUBLIC_APP_NAME || 'HCAI'}
+            </div>
             <nav>
               <a href="/">Dashboard</a>
               <a href="/workflows">Workflows</a>
