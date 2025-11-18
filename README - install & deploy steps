@@ -1,0 +1,34 @@
+```md
+# n8n-style UI (High Consulting AI)
+
+
+1. Install dependencies locally:
+
+
+```bash
+npm install
+npm install reactflow@11.0.8 tailwindcss postcss autoprefixer clsx @supabase/supabase-js
+npx tailwindcss init -p
+```
+
+
+2. Copy the files above into your project (paths listed). If you already have files with the same name, merge carefully.
+
+
+3. Set environment variables on Render:
+
+
+- SUPABASE_URL
+- SUPABASE_SERVICE_ROLE_KEY
+- NEXT_PUBLIC_SUPABASE_URL
+- NEXT_PUBLIC_SUPABASE_ANON_KEY
+- NEXT_PUBLIC_APP_NAME
+- N8N_BASE_URL (if used)
+- N8N_API_KEY (if used)
+
+
+4. Commit & push to GitHub. Render will redeploy automatically.
+
+
+5. Test the UI at your Render URL.
+```
