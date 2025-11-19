@@ -1,16 +1,20 @@
+// app/workflows/page.jsx
 'use client'
 
-import Siderbar from '../../components/Siderbar.jsx'
-import Topbar from '../../components/Topbar.jsx'
-import CanvasArea from '../../components/CanvasArea.jsx'
+import Sidebar from '@components/Sidebar'
+import Topbar from '@components/Topbar'
+import CanvasArea from '@components/CanvasArea'
 
 export default function WorkflowsPage() {
   return (
-    <div className="flex">
-      <Siderbar />
+    <div className="flex min-h-screen">
+      <Sidebar />
       <div className="flex-1">
         <Topbar />
-        <CanvasArea />
+        <main className="p-6">
+          <h2 className="text-xl font-semibold mb-4">Workflows</h2>
+          <CanvasArea />
+        </main>
       </div>
     </div>
   )
