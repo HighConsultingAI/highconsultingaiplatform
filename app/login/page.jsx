@@ -1,8 +1,8 @@
+// app/login/page.jsx
 'use client'
-
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '../../lib/supabaseClient'
+import { supabase } from '@lib/supabaseClient'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -30,21 +30,21 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="container">
-      <h1>Sign in / Sign up</h1>
-      <div className="card">
-        <label>Email</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+    <div className="container p-6">
+      <h1 className="text-2xl font-bold">Sign in / Sign up</h1>
+      <div className="card mt-4 p-4 max-w-md">
+        <label className="block mb-2">Email</label>
+        <input value={email} onChange={(e)=>setEmail(e.target.value)} className="w-full p-2 rounded border mb-3" />
 
-        <label>Password</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <label className="block mb-2">Password</label>
+        <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="w-full p-2 rounded border mb-3" />
 
-        <div style={{ display: 'flex', gap: 12 }}>
-          <button onClick={signIn} disabled={loading}>{loading ? '...' : 'Sign in'}</button>
-          <button onClick={signUp} disabled={loading}>Sign up</button>
+        <div className="flex gap-3">
+          <button className="btn" onClick={signIn} disabled={loading}>{loading ? '...' : 'Sign in'}</button>
+          <button className="btn bg-purple-600 text-white" onClick={signUp} disabled={loading}>{loading ? '...' : 'Sign up'}</button>
         </div>
 
-        {message && <p>{message}</p>}
+        {message && <p className="mt-3 text-sm text-red-400">{message}</p>}
       </div>
     </div>
   )
