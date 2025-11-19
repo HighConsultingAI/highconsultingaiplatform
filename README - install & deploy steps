@@ -1,34 +1,12 @@
-```md
-# n8n-style UI (High Consulting AI)
+# High Consulting AI — Fixed Starter
 
+Steps:
+1. Copy this project into your repo root (replace files).
+2. Copy `.env.template` to `.env.local` and fill values.
+3. Install deps: `npm install`
+4. Run dev: `npm run dev` or build: `npm run build`
+5. Deploy to Render (connect GitHub repo).
 
-1. Install dependencies locally:
-
-
-```bash
-npm install
-npm install reactflow@11.0.8 tailwindcss postcss autoprefixer clsx @supabase/supabase-js
-npx tailwindcss init -p
-```
-
-
-2. Copy the files above into your project (paths listed). If you already have files with the same name, merge carefully.
-
-
-3. Set environment variables on Render:
-
-
-- SUPABASE_URL
-- SUPABASE_SERVICE_ROLE_KEY
-- NEXT_PUBLIC_SUPABASE_URL
-- NEXT_PUBLIC_SUPABASE_ANON_KEY
-- NEXT_PUBLIC_APP_NAME
-- N8N_BASE_URL (if used)
-- N8N_API_KEY (if used)
-
-
-4. Commit & push to GitHub. Render will redeploy automatically.
-
-
-5. Test the UI at your Render URL.
-```
+Notes:
+- Supabase keys must use the NEXT_PUBLIC_ prefix for client use.
+- ReactFlow dynamic imports are set up for SSR safety.
