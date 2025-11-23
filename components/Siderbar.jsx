@@ -1,27 +1,52 @@
-// components/Sidebar.jsx
 'use client'
+
 import Link from 'next/link'
+import { Workflow, Home, Settings, Plus } from 'lucide-react'
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 bg-zinc-900 min-h-screen p-4 text-white flex flex-col">
-      <div className="brand mb-6">
-        <div className="logo w-10 h-10 rounded bg-white text-black flex items-center justify-center mb-2">H</div>
-        <div className="font-semibold">High Consulting AI</div>
-        <div className="text-xs text-zinc-400">Automation</div>
+    <div className="w-64 bg-gray-900 text-white h-screen flex flex-col">
+      <div className="p-6 border-b border-gray-800">
+        <h1 className="text-xl font-bold">High Consulting AI</h1>
+        <p className="text-sm text-gray-400">Workflow Platform</p>
       </div>
 
-      <div className="mb-4">
-        <button className="w-full py-2 rounded bg-zinc-800 hover:bg-zinc-700 text-sm">Create</button>
-      </div>
+      <nav className="flex-1 p-4 space-y-2">
+        <Link 
+          href="/" 
+          className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors"
+        >
+          <Home size={20} />
+          <span>Home</span>
+        </Link>
 
-      <nav className="flex flex-col gap-2">
-        <Link className="block p-2 rounded hover:bg-zinc-800" href="/workflows">Workflows</Link>
-        <Link className="block p-2 rounded hover:bg-zinc-800" href="/executions">Executions</Link>
-        <Link className="block p-2 rounded hover:bg-zinc-800" href="/credentials">Credentials</Link>
+        <Link 
+          href="/workflows" 
+          className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors"
+        >
+          <Workflow size={20} />
+          <span>Workflows</span>
+        </Link>
+
+        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors text-left">
+          <Plus size={20} />
+          <span>New Workflow</span>
+        </button>
+
+        <Link 
+          href="/settings" 
+          className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors"
+        >
+          <Settings size={20} />
+          <span>Settings</span>
+        </Link>
       </nav>
 
-      <div className="mt-auto text-xs text-zinc-500">v0.1.0</div>
-    </aside>
+      <div className="p-4 border-t border-gray-800">
+        <div className="text-xs text-gray-400">
+          <p>© 2024 High Consulting</p>
+        </div>
+      </div>
+    </div>
   )
 }
