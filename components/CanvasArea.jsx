@@ -1,46 +1,81 @@
-// components/CanvasArea.jsx
 'use client'
-import React, { useCallback, useState } from 'react'
-import dynamic from 'next/dynamic'
-import SimpleNode from './NodeTypes/SimpleNode'
 
-// ReactFlow v11 default export is the component itself
-const ReactFlow = dynamic(() => import('reactflow').then(m => m.default), { ssr: false })
-const Background = dynamic(() => import('reactflow').then(m => m.Background), { ssr: false })
-const Controls = dynamic(() => import('reactflow').then(m => m.Controls), { ssr: false })
-const MiniMap = dynamic(() => import('reactflow').then(m => m.MiniMap), { ssr: false })
+import { useCallback } from 'react'
+import ReactFlow, {
+  MiniMap,
+  Controls,
+  Background,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+} from 'reactflow'
+import 'reactflow/dist/style.css'
 
-export default function CanvasArea({ workflowId }) {
-  const [nodes, setNodes] = useState([
-    { id: '1', type: 'simple', position: { x: 50, y: 50 }, data: { label: 'Trigger', desc: 'Starts workflow' } },
-    { id: '2', type: 'simple', position: { x: 360, y: 80 }, data: { label: 'HTTP Request', desc: 'Calls API' } }
-  ])
+import SimpleNode from '@components/NodeTypes/SimpleNode'
 
-  const [edges, setEdges] = useState([
-    { id: 'e1-2', source: '1', target: '2', animated: false }
-  ])
+const nodeTypes = {
+  simpleNode: SimpleNode,
+}
 
-  const nodeTypes = { simple: SimpleNode }
+const initialNodes = [
+  {
+    id: '1',
+    type: 'simpleNode',
+    position: { x: 250, y: 100 },
+    data: { 
+      label: 'Start Node', 
+      icon: 'webhook',
+      type: 'Trigger',
+      description: 'Workflow starts here'
+    },
+  },
+  {
+    id: '2',
+    type: 'simpleNode',
+    position: { x: 250, y: 300 },
+    data: { 
+      label: 'Process Data', 
+      icon: 'database',
+      type: 'Action',
+      description: 'Transform and process'
+    },
+  },
+]
 
-  const onNodesChange = useCallback((changes) => {
-    // no-op for now
-  }, [])
+const initialEdges = [
+  { id: 'e1-2', source: '1', target: '2', animated: true },
+]
+
+export default function CanvasArea() {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
+
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges]
+  )
 
   return (
-    <div className="canvas-shell">
-      <div style={{ height: 720 }}>
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          onNodesChange={onNodesChange}
-          nodeTypes={nodeTypes}
-          fitView
-        >
-          <Background />
-          <Controls />
-          <MiniMap />
-        </ReactFlow>
-      </div>
+    <div className="flex-1 bg-gray-50">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        nodeTypes={nodeTypes}
+        fitView
+        className="bg-gray-50"
+      >
+        <Controls />
+        <MiniMap 
+          nodeColor={(node) => {
+            return '#3b82f6'
+          }}
+          className="bg-white border border-gray-200"
+        />
+        <Background variant="dots" gap={12} size={1} color="#d1d5db" />
+      </ReactFlow>
     </div>
   )
 }
